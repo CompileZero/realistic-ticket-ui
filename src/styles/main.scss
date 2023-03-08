@@ -1,0 +1,91 @@
+$bgColor: #a28267;
+$cardHeaderColor: #cd9c71;
+$cardBodyColor: #ede4db;
+$carbon1: #ceab8c;
+$carbon2: #dcc3ae;
+
+* {
+  margin: 0px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $bgColor;
+
+  #header {
+    width: 100%;
+    height: 90px;
+    background: radial-gradient(black 15%, transparent 16%) 0 0,
+      radial-gradient(black 15%, transparent 16%) 8px 8px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
+  }
+  #main {
+    display: flex;
+    flex-grow: 1;
+    background-image: url("../resources/Denim.svg");
+    // background: radial-gradient(#92775f 15%, transparent 16%) 0 0,
+    //   radial-gradient(#92775f 15%, transparent 16%) 8px 8px,
+    //   radial-gradient(#a8927e 15%, transparent 20%) 0 1px,
+    //   radial-gradient(#a8927e 15%, transparent 20%) 8px 9px;
+    // background-size: 16px 16px;
+
+    #card {
+      display: flex;
+      flex-direction: column;
+
+      margin: auto;
+      width: 576px;
+      height: 589px;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(
+        rgba(255 255 255 /0.1) 2%,
+        $cardHeaderColor 10%
+      );
+      background-color: $cardHeaderColor;
+
+      box-shadow: 0px 0px 20px rgba(0 0 0 / 0.2),
+        0px 0px 2px 2px rgba(0 0 0 / 0.25);
+
+      #cardHeader {
+        width: 100%;
+        height: 96px;
+        border-radius: 8px;
+        background: radial-gradient($carbon1 15%, transparent 16%) 0 0,
+          radial-gradient($carbon1 15%, transparent 16%) 8px 8px,
+          radial-gradient($carbon2 15%, transparent 20%) 0 1px,
+          radial-gradient($carbon2 15%, transparent 20%) 8px 9px;
+        background-size: 16px 16px;
+      }
+
+      #cardBody {
+        flex-grow: 1;
+        background-color: $cardBodyColor;
+      }
+    }
+  }
+}
+
+svg {
+  display: block;
+  width: 100%;
+  margin: 0;
+
+  g {
+    #tan {
+      filter: drop-shadow(0px 4px 4px rgba(0 0 0 / 0.6))
+        drop-shadow(0px -1px 1px rgb(0 0 0 / 0.9))
+        drop-shadow(0px -1px 1px rgb(0 0 0 / 0.25)) url(#inset-shadow-2);
+    }
+    line {
+      filter: drop-shadow(0px 4px 4px rgba(0 0 0 / 0.25))
+        drop-shadow(0px -1px 1px rgb(0 0 0 / 0.5))
+        drop-shadow(6px 0px 4px rgb(0 0 0 / 0.25)) url(#inset-shadow)
+        brightness(100%);
+    }
+  }
+}
