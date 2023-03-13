@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"HELLO!!\");\n\n\n//# sourceURL=webpack://realistic-ticket-ui/./src/index.js?");
+eval("\n\n\n//# sourceURL=webpack://realistic-ticket-ui/./src/index.js?");
 
 /***/ })
 
