@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n\n//# sourceURL=webpack://realistic-ticket-ui/./src/index.js?");
+eval("// const cardBody = document.getElementById(\"cardBody\");\n// const ticketCard = document.createElement(\"div\");\n// ticketCard.className = \"ticket-card\";\n// ticketCard.innerHTML = `\n// <div class=\"header\">Col1</div>\n// <div class=\"body\">\n//     <div>\n//         <p class=\"date-time\">WEDNESDAY, 6:30PM</p>\n//         <p class=\"title\">Catch up with Friends</p>\n//     </div>\n//     <p class=\"event-type\" style=\"background-color: #d1baef;\">CALENDAR</p>\n// </div>\n// <div class=\"calendar\">\n//     <p class=\"month\">Mar</p>\n//     <p class=\"date\">21</p>\n// </div>`;\n// cardBody.append(ticketCard);\n\n// const ticketCard = document.getElementById(\"ticketCard\");\n// ticketCard.addEventListener(\"click\", () => {\n//   ticketCard.classList.add(\"magictime\", \"spaceOutRight\");\n// });\nconsole.log(\"Hello!\");\n\n\n//# sourceURL=webpack://realistic-ticket-ui/./src/index.js?");
 
 /***/ })
 
