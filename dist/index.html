@@ -2,136 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/magic.min.css">
-    <link rel="stylesheet" href="styles/main.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/index.css">
+  <title>Realistic Ticket UI</title>
 </head>
 
 <body>
-    <div id="container">
-        <section id="header">
-            <svg height="90">
-                <filter id="inset-shadow" width="200%" height="200%">
-                    <!-- Shadow Offset -->
-                    <feOffset dx="0" dy="1" />
-                    <!-- Shadow Blur -->
-                    <feGaussianBlur stdDeviation="1" result="offset-blur" />
-                    <!-- Invert the drop shadow to create an inner shadow -->
-                    <feComposite operator="out" in="SourceGraphic" result="inverse" />
-                    <!-- Color & Opacity -->
-                    <feFlood flood-color="white" flood-opacity="1" result="color" />
-                    <!-- Clip color inside shadow -->
-                    <feComposite operator="in" in="color" in2="inverse" result="shadow" />
-                    <!-- Shadow Opacity -->
-                    <feComponentTransfer in="shadow" result="shadow">
-                        <feFuncA type="linear" slope="1" />
-                    </feComponentTransfer>
-                    <!-- Put shadow over original object -->
-                    <!--<feComposite operator="over" in="shadow" in2="SourceGraphic"/>-->
-                </filter>
-                <line stroke="#474747" stroke-width="4" x1="0" y1="82" x2="2400" y2="82" stroke-linecap="round"
-                    stroke-dasharray="10,15" />
-                <g fill="none" stroke="gray" stroke-width="4">
-                    <line x1="0" y1="82" x2="2400" y2="82" stroke-linecap="round" stroke-dasharray="10,15" />
-                </g>
-            </svg>
-
-        </section>
-        <section id="main">
-            <div id="card">
-                <div id="cardHeader">
-                    <svg height="96">
-                        <filter id="inset-shadow-2" width="200%" height="200%">
-                            <!-- Shadow Offset -->
-                            <feOffset dx="0" dy="1" />
-                            <!-- Shadow Blur -->
-                            <feGaussianBlur stdDeviation="1" result="offset-blur" />
-                            <!-- Invert the drop shadow to create an inner shadow -->
-                            <feComposite operator="out" in="SourceGraphic" result="inverse" />
-                            <!-- Color & Opacity -->
-                            <feFlood flood-color="white" flood-opacity="0.8" result="color" />
-                            <!-- Clip color inside shadow -->
-                            <feComposite operator="in" in="color" in2="inverse" result="shadow" />
-                            <!-- Shadow Opacity -->
-                            <feComponentTransfer in="shadow" result="shadow">
-                                <feFuncA type="linear" slope="1" />
-                            </feComponentTransfer>
-                            <!-- Put shadow over original object -->
-                            <feComposite operator="over" in="shadow" in2="SourceGraphic" />
-                        </filter>
-                        <line stroke="#ceab8c" stroke-width="4" x1="0" y1="88" x2="2400" y2="88" stroke-linecap="round"
-                            stroke-dasharray="10,10" />
-                        <g fill="none" stroke="#ceab8c" stroke-width="4">
-                            <line id="tan" x1="0" y1="88" x2="2400" y2="88" stroke-linecap="round"
-                                stroke-dasharray="10,10" />
-                        </g>
-                    </svg>
-                </div>
-                <div id="cardBody">
-                    <div class="ticket-card">
-                        <div class="header">Col1</div>
-                        <div class="body">
-                            <div class="details">
-                                <p class="date-time">WEDNESDAY, 6:30PM</p>
-                                <p class="title">Catch up with Friends</p>
-                            </div>
-                            <p class="event-type" style="background-color: #d1baef;">CALENDAR</p>
-                        </div>
-                        <div class="calendar">
-                            <p class="month">Mar</p>
-                            <p class="date">16</p>
-                        </div>
-                    </div>
-                    <div class="ticket-card">
-                        <div class="header">Col1</div>
-                        <div class="body">
-                            <div class="details">
-                                <p class="date-time">WEDNESDAY, 6:30PM</p>
-                                <p class="title">Flight: Del to Aus</p>
-                            </div>
-                            <p class="event-type" style="background-color: #f1c2cc;">TRAVEL</p>
-                        </div>
-                        <div class="calendar">
-                            <p class="month">Mar</p>
-                            <p class="date">21</p>
-                        </div>
-                    </div>
-                    <div class="ticket-card">
-                        <div class="header">Col1</div>
-                        <div class="body">
-                            <div class="details">
-                                <p class="date-time">WEDNESDAY, 6:30PM</p>
-                                <p class="title">Movie: Avengers 8</p>
-                            </div>
-                            <p class="event-type" style="background-color: #badbdf;">MOVIE</p>
-                        </div>
-                        <div class="calendar">
-                            <p class="month">MAY</p>
-                            <p class="date">03</p>
-                        </div>
-                    </div>
-                    <div class="ticket-card">
-                        <div class="header">Col1</div>
-                        <div class="body">
-                            <div class="details">
-                                <p class="date-time">WEDNESDAY, 6:30PM</p>
-                                <p class="title">Trident Jaipur</p>
-                            </div>
-                            <p class="event-type" style="background-color: #bcefbb;">HOTEL</p>
-                        </div>
-                        <div class="calendar">
-                            <p class="month">APR</p>
-                            <p class="date">12</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div id="container">
+    <div id="headerBg">
+      <section id="header">
+        <svg height="90">
+          <filter id="inset-shadow" width="200%" height="200%">
+            <!-- Shadow Offset -->
+            <feOffset dx="0" dy="1" />
+            <!-- Shadow Blur -->
+            <feGaussianBlur stdDeviation="1" result="offset-blur" />
+            <!-- Invert the drop shadow to create an inner shadow -->
+            <feComposite operator="out" in="SourceGraphic" result="inverse" />
+            <!-- Color & Opacity -->
+            <feFlood flood-color="white" flood-opacity="1" result="color" />
+            <!-- Clip color inside shadow -->
+            <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+            <!-- Shadow Opacity -->
+            <feComponentTransfer in="shadow" result="shadow">
+              <feFuncA type="linear" slope="1" />
+            </feComponentTransfer>
+            <!-- Put shadow over original object -->
+            <!--<feComposite operator="over" in="shadow" in2="SourceGraphic"/>-->
+          </filter>
+          <line stroke="#474747" stroke-width="4" x1="0" y1="82" x2="2400" y2="82" stroke-dasharray="10,15"
+            stroke-linecap="round" />
+          <g fill="none" stroke="gray" stroke-width="4">
+            <line x1="0" y1="82" x2="2400" y2="82" stroke-linecap="round" stroke-dasharray="10,15" />
+          </g>
+        </svg>
+      </section>
     </div>
-    <script src="main.js"></script>
+    <section id="main">
+      <div id="card">
+        <div id="cardHeader">
+          <svg height="96">
+            <filter id="inset-shadow-2" width="200%" height="200%">
+              <!-- Shadow Offset -->
+              <feOffset dx="0" dy="1" />
+              <!-- Shadow Blur -->
+              <feGaussianBlur stdDeviation="1" result="offset-blur" />
+              <!-- Invert the drop shadow to create an inner shadow -->
+              <feComposite operator="out" in="SourceGraphic" result="inverse" />
+              <!-- Color & Opacity -->
+              <feFlood flood-color="white" flood-opacity="0.8" result="color" />
+              <!-- Clip color inside shadow -->
+              <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+              <!-- Shadow Opacity -->
+              <feComponentTransfer in="shadow" result="shadow">
+                <feFuncA type="linear" slope="1" />
+              </feComponentTransfer>
+              <!-- Put shadow over original object -->
+              <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+            </filter>
+            <line stroke="#ceab8c" stroke-width="4" x1="0" y1="88" x2="2400" y2="88" stroke-linecap="round"
+              stroke-dasharray="10,10" />
+            <g fill="none" stroke="#ceab8c" stroke-width="4">
+              <line id="tan" x1="0" y1="88" x2="2400" y2="88" stroke-linecap="round" stroke-dasharray="10,10" />
+              <!-- <rect id="tan" x="6" y="8" rx="10" ry="10" width="98%" height="81" stroke-linecap="round"
+                                stroke-dasharray="10,10" /> -->
+            </g>
+          </svg>
+        </div>
+        <div id="cardBody">
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script src="main.js"></script>
 </body>
 
 </html>
