@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  margin: 0px;
+}
+
+@keyframes expand {
+  0% {
+    height: 104px;
+  }
+  100% {
+    height: 400px;
+  }
+}
+
+#container {
+  background-color: #a28267;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#header {
+  stroke: 4px black dashed;
+  width: 100%;
+  height: 90px;
+  background: black;
+  background: radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(#454545 15%, transparent 20%) 0px 1px,
+    radial-gradient(#454545 15%, transparent 20%) 8px 9px;
+  /* radial-gradient(#454545 15%, transparent 20%) 8px 9px; */
+  background-size: 16px 16px;
+}
+
+#headerBg {
+  background: linear-gradient(
+    #404040 0%,
+    #282828 14%,
+    #282828 78%,
+    #131313 83%,
+    #131313 94%,
+    #2d2d2d 96%
+  );
+}
+
+svg {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+#tan {
+  filter: drop-shadow(0px 4px 4px rgba(0 0 0 / 0.6))
+    drop-shadow(0px -1px 1px rgb(0 0 0 / 0.9))
+    drop-shadow(0px -1px 1px rgb(0 0 0 / 0.25)) url(#inset-shadow-2);
+}
+line {
+  filter: drop-shadow(0px 4px 4px rgba(0 0 0 / 0.25))
+    drop-shadow(0px -1px 1px rgb(0 0 0 / 0.5))
+    drop-shadow(6px 0px 4px rgb(0 0 0 / 0.25)) url(#inset-shadow)
+    brightness(100%);
+}
+
+#main {
+  display: flex;
+  flex-grow: 1;
+}
+
+#card {
+  background: linear-gradient(
+    #e0b38b 0%,
+
+    #cd9c71 4%,
+    #cd9c71 13%,
+
+    #805938 15%,
+    #cd9c71 15%
+  );
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px 8px 0 0;
+  margin: auto;
+  height: 589px;
+  width: 576px;
+  box-shadow: 0px 0px 10px rgba(0 0 0 / 0.3);
+}
+
+#cardBody {
+  flex-grow: 1;
+  background-color: #ede4db;
+}
+
+#cardHeader {
+  width: 100%;
+  height: 96px;
+  border-radius: 8px;
+  background: radial-gradient(#ceab8c 15%, transparent 16%) 0 0,
+    radial-gradient(#ceab8c 15%, transparent 16%) 8px 8px,
+    radial-gradient(#dcc3ae 15%, transparent 20%) 0 1px,
+    radial-gradient(#dcc3ae 15%, transparent 20%) 8px 9px;
+  background-size: 16px 16px;
+}
+
+.ticket {
+  position: relative;
+  display: flex;
+  margin: -32px 8px 8px 8px;
+  border: 3px #a37d5c solid;
+  height: 104px;
+
+  background-color: #ece2d9;
+  box-shadow: 0px 0px 10px rgba(0 0 0 / 0.5);
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+}
+
+.ticket:first-child {
+  margin: 8px;
+}
+
+.t-icon {
+  width: 56px;
+  border-right: 3px dashed #d1a892;
+  display: flex;
+}
+
+.t-icon img {
+  width: 100%;
+  height: 36px;
+  margin-top: 16px;
+}
+
+.t-body {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.t-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.t-details .day-time {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #a37d5c;
+  font-weight: 100;
+}
+
+.t-details .event-title {
+  font-size: 36px;
+  color: #a3755d;
+}
+
+.event-type {
+  font-size: 24px;
+  text-align: right;
+  padding: 4px;
+  height: fit-content;
+  width: 96px;
+  color: #634230;
+  margin-top: 34px;
+  transform: rotate(-90deg) translate(0px, 34px);
+}
+
+.date-card {
+  color: white;
+  background-color: #d1a892;
+  padding: 0px 2px 0px 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.date-card .month {
+  margin-bottom: -16px;
+  margin-top: 24px;
+  font-size: 24px;
+  text-align: right;
+}
+
+.date-card .date {
+  font-size: 96px;
+  letter-spacing: -4px;
+}
+
+.animate-expand {
+  transition: 2s all ease;
+  height: 580px;
+  animation: slidein 1s ease-in-out 0s;
+}
