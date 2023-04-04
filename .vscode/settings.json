@@ -1,0 +1,20 @@
+{
+    "editor.quickSuggestions": {
+        "other": "inline"
+    },
+    "editor.parameterHints.enabled": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+    "workbench.editor.showTabs": true,
+    "workbench.editor.scrollToSwitchTabs": false,
+    "workbench.editor.pinnedTabSizing": "compact",
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "indentRainbow.excludedLanguages": [
+      "plaintext"
+    ],
+    "editor.lineNumbers": "off",
+    "search.showLineNumbers": true,
+    "liveServer.settings.port": 5501
+}
