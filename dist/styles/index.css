@@ -6,10 +6,35 @@
 
 @keyframes expand {
   0% {
-    height: 104px;
+    height: 19px;
+    opacity: 0;
   }
   100% {
-    height: 400px;
+    height: 560px;
+    opacity: 100%;
+  }
+}
+
+@keyframes scale {
+  0% {
+    width: 576px;
+  }
+  100% {
+    width: 1120px;
+  }
+}
+
+@keyframes slide-out-elliptic-right-bck {
+  0% {
+    transform: translateX(0) rotateY(0) scale(1);
+    left: 0px;
+    top: 0px;
+    // transform-origin: -100px 50%;
+    opacity: 1;
+  }
+  100% {
+    top: -24px;
+    left: 576px;
   }
 }
 
@@ -82,13 +107,8 @@ line {
   border-radius: 8px 8px 0 0;
   margin: auto;
   height: 589px;
-  width: 576px;
+  /* width: 576px; */
   box-shadow: 0px 0px 10px rgba(0 0 0 / 0.3);
-}
-
-#cardBody {
-  flex-grow: 1;
-  background-color: #ede4db;
 }
 
 #cardHeader {
@@ -108,11 +128,18 @@ line {
   margin: -32px 8px 8px 8px;
   border: 3px #a37d5c solid;
   height: 104px;
-
+  top: 0px;
+  left: 0px;
   background-color: #ece2d9;
   box-shadow: 0px 0px 10px rgba(0 0 0 / 0.5);
   font-family: "Bebas Neue", cursive;
   cursor: pointer;
+}
+
+#ticketList {
+  position: relative;
+  width: 570px;
+  height: 589px;
 }
 
 .ticket:first-child {
@@ -189,8 +216,67 @@ line {
   letter-spacing: -4px;
 }
 
-.animate-expand {
-  transition: 2s all ease;
-  height: 580px;
-  animation: slidein 1s ease-in-out 0s;
+.ticket-intermediate {
+  left: 573px;
+  height: 19px;
+  width: 554px;
+  transition: 0.75s all ease;
 }
+
+.ticket-intermediate * {
+  opacity: 0;
+  transition: 0.75s all ease;
+}
+
+.ticket-revert {
+  left: -576px;
+  width: 554px;
+  transition: 0.75s all ease;
+}
+
+.ticket-expanded {
+  height: 95%;
+  margin: 8px;
+  width: 560px;
+  animation: expand 0.75s ease;
+}
+
+#cardContainer {
+  display: flex;
+  width: 570px;
+  background-color: #ede4db;
+  transition: all 0.75s ease;
+}
+
+#cardContainerExpanded {
+  display: flex;
+  width: 1152px;
+  background-color: #ede4db;
+  transition: all 0.75s ease;
+}
+
+/* #btnContainer {
+  position: absolute;
+  margin: 16px;
+}
+
+#btnContainer .btn {
+  height: 48px;
+  line-height: 48px;
+  font-family: "Bebas Neue";
+  font-size: 32px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(168, 112, 46, 0.1) 100%
+    ),
+    #cfaa89;
+  border: 1.5px solid #a37d5c;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn span {
+  color: transparent;
+  text-shadow: 0px 0px 3px #b37c5e, 0 0px 0px rgba(0, 0, 0, 0.8);
+} */

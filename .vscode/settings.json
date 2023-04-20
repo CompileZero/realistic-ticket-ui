@@ -4,7 +4,7 @@
     },
     "editor.parameterHints.enabled": false,
     "editor.suggestOnTriggerCharacters": false,
-    "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+    "workbench.colorTheme": "Oceanic Next",
     "workbench.editor.showTabs": true,
     "workbench.editor.scrollToSwitchTabs": false,
     "workbench.editor.pinnedTabSizing": "compact",

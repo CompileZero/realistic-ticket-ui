@@ -1,4 +1,4 @@
-// const cardBody = document.getElementById("cardBody");
+// const ticketList = document.getElementById("ticketList");
 // const ticketCard = document.createElement("div");
 // ticketCard.className = "ticket-card";
 // ticketCard.innerHTML = `
@@ -14,7 +14,7 @@
 //     <p class="month">Mar</p>
 //     <p class="date">21</p>
 // </div>`;
-// cardBody.append(ticketCard);
+// ticketList.append(ticketCard);
 
 // const ticketCard = document.getElementById("ticketCard");
 // ticketCard.addEventListener("click", () => {
@@ -64,9 +64,7 @@ function createTicket(eventType, title, dateTime) {
     minute: "numeric",
   });
 
-  console.log({ month, date, weekday, time });
-
-  const ticketCard = document.createElement("div");
+  let ticketCard = document.createElement("div");
   ticketCard.innerHTML = `
   <div class="t-icon"><img src="resources/${icon}"></div>
   <div class="t-body"><div class="t-details">
@@ -79,14 +77,51 @@ function createTicket(eventType, title, dateTime) {
   </div>`;
 
   ticketCard.className = "ticket";
-  const cardBody = document.getElementById("cardBody");
-  cardBody.appendChild(ticketCard);
+  const ticketList = document.getElementById("ticketList");
+  ticketList.appendChild(ticketCard);
+
+  const cardContainerEl = document.getElementById("cardContainer");
 
   ticketCard.addEventListener("click", () => {
-    ticketCard.className = "ticket animate-expand";
-    console.log(ticketCard);
+    if (ticketCard.className === "ticket") {
+      const ticketExpandedEl = document.getElementById("ticket-expanded");
+
+      ticketCard.style.top = `-${ticketCard.offsetTop - 8}px`;
+      ticketCard.className = "ticket ticket-intermediate";
+
+      if (ticketExpandedEl.children.length) {
+        const oldTicket = ticketExpandedEl.children[0];
+        oldTicket.className = "ticket ticket-revert";
+        oldTicket.style.top = `${ticketList.offsetHeight - 246}px`; // 104 height + 104 height + 19 px(8px + 8px margin + 3px border) + 19px
+      }
+
+      if (cardContainerEl.id === "cardContainer") {
+        cardContainerEl.setAttribute("id", "cardContainerExpanded");
+      }
+    }
+  });
+
+  ticketCard.addEventListener("transitionend", () => {
+    console.log("transitionEnd");
+    ticketCard.style.top = "0px";
+    if (ticketCard.className === "ticket ticket-intermediate") {
+      ticketCard.className = "ticket ticket-expanded";
+      const ticketExpandedEl = document.getElementById("ticket-expanded");
+      ticketExpandedEl.appendChild(ticketCard);
+    } else if (ticketCard.className === "ticket ticket-revert") {
+      ticketCard.className = "ticket";
+      ticketList.appendChild(ticketCard);
+    }
+
+    // ticketCard.className = "ticket ticket-expanded-new";
   });
 }
+
+function renderDetails(ticket) {
+  ticket.innerHTML = "";
+}
+
+function renderMain() {}
 
 createTicket("event", "Coldplay Mumbai!", new Date(2023, 2, 5, 10, 30));
 createTicket("movie", "Avengers 8", new Date(2023, 3, 7, 12, 45));
