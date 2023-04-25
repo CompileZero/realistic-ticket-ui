@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Display:wght@700&display=swap");
 
 * {
   margin: 0px;
+  font-family: "Bebas Neue", cursive;
 }
 
 @keyframes expand {
@@ -11,6 +13,26 @@
   }
   100% {
     height: 560px;
+    opacity: 100%;
+  }
+}
+
+@keyframes contract {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+@keyframes expand-basic {
+  0% {
+    /* height: 19px; */
+    opacity: 0;
+  }
+  100% {
+    /* height: 104px; */
     opacity: 100%;
   }
 }
@@ -134,6 +156,7 @@ line {
   box-shadow: 0px 0px 10px rgba(0 0 0 / 0.5);
   font-family: "Bebas Neue", cursive;
   cursor: pointer;
+  animation: expand-basic 0.75s ease;
 }
 
 #ticketList {
@@ -234,11 +257,30 @@ line {
   transition: 0.75s all ease;
 }
 
+.ticket-revert * {
+  opacity: 0%;
+  transition: 0.75s ease all;
+}
+
+.ticket-revert #ticket-tear-container {
+  background: transparent;
+}
+
 .ticket-expanded {
   height: 95%;
   margin: 8px;
   width: 560px;
   animation: expand 0.75s ease;
+
+  clip-path: polygon(
+    0 0,
+    100% 0%,
+    100% 75%,
+    95% 79.5%,
+    100% 83%,
+    100% 100%,
+    0 100%
+  );
 }
 
 #cardContainer {
@@ -255,28 +297,163 @@ line {
   transition: all 0.75s ease;
 }
 
-/* #btnContainer {
-  position: absolute;
+.ticket-full-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-tag-top {
+  font-size: 24px;
+  padding: 4px;
+  height: fit-content;
+  color: #634230;
+}
+
+#details-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.details-icon {
+}
+.details-icon img {
+  height: 64px;
+  margin-right: 16px;
+}
+
+.details-title-desc {
+  flex-grow: 1;
+}
+.details-title-desc h1 {
+  font-size: 60px;
+  color: #81544f;
+  line-height: 90%;
+  font-weight: normal;
+}
+
+.details-title-desc p {
+  font-family: "SF Pro Rounded", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #b27c5e;
+}
+
+#details-mid {
+  border-top: 3px dashed #d1a892;
+  border-bottom: 3px dashed #d1a892;
+  display: flex;
+}
+
+#details-mid-left {
   margin: 16px;
+  border: 1px solid #a37d5c;
+  flex-basis: 70%;
 }
 
-#btnContainer .btn {
-  height: 48px;
-  line-height: 48px;
-  font-family: "Bebas Neue";
-  font-size: 32px;
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(168, 112, 46, 0.1) 100%
-    ),
-    #cfaa89;
-  border: 1.5px solid #a37d5c;
-  border-radius: 4px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+#details-mid-left h1 {
+  color: #a75d5d;
+  font-size: 64px;
+  font-weight: 100;
 }
 
-.btn span {
-  color: transparent;
-  text-shadow: 0px 0px 3px #b37c5e, 0 0px 0px rgba(0, 0, 0, 0.8);
-} */
+#details-mid-left h2 {
+  color: #81544f;
+  font-size: 48px;
+  font-weight: 100;
+}
+
+#details-mid-left p {
+  color: rgba(167, 93, 93, 0.5);
+  font-size: 18px;
+}
+
+.details-mid-left-toprow {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #a37d5c;
+  text-align: center;
+}
+
+.details-mid-members {
+  padding-top: 8px;
+}
+
+.details-mid-extra {
+  border-left: 1px solid #a37d5c;
+  border-right: 1px solid #a37d5c;
+  flex-basis: 50%;
+  padding-top: 8px;
+}
+
+.details-mid-priority {
+  padding-top: 8px;
+}
+
+.details-mid-left-bottomrow {
+  padding: 8px;
+}
+
+#details-mid-right {
+  border-left: 3px dashed #d1a892;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+#details-mid-right h1 {
+  font-family: "Big Shoulders Inline Display", sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.details-mid-datetime {
+  display: flex;
+  flex-basis: 80%;
+  width: 110px;
+  line-height: 60px;
+}
+
+.details-mid-datetime h1 {
+  color: #754043;
+  writing-mode: vertical-lr;
+}
+
+.details-mid-day h1 {
+  text-align: center;
+  color: #8b7e74;
+}
+
+#ticket-tear-container {
+  margin-bottom: auto;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    #e7d8cc 20px,
+    #e7d8cc 40px
+  );
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+#ticket-tear-container h1 {
+  font-family: "Big Shoulders Inline Display", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#decline-badge {
+  align-self: end;
+  margin: 0 0 8px 8px;
+  color: #36b27e;
+}
+
+#accept-badge {
+  margin: 8px 8px 0 0;
+  color: #ff8f73;
+}
