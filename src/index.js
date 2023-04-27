@@ -26,6 +26,8 @@ const EVENT_TYPES = {
   },
 };
 
+const TICKET_STATE = {};
+
 function createTicket(
   eventType,
   title,
@@ -65,6 +67,7 @@ function createTicket(
     place,
     priority,
     extra,
+    id: Math.floor(Math.random() * 100),
   };
 
   let ticketCard = document.createElement("div");
@@ -127,6 +130,7 @@ function renderDetails(ticket, allData) {
     place,
     priority,
     extra,
+    id,
   } = allData;
   ticket.innerHTML = `<div class="ticket-full-details">
     <div id="ticket-details-container">
@@ -176,24 +180,66 @@ function renderDetails(ticket, allData) {
       <div id="decline-badge">
         <h1>↪︎DECLINE</h1>
       </div>
-      <!-- <div class="ticket-tear-mid">
-        <h1>Hello</h1>
-      </div> -->
       <div id="accept-badge">
         <h1>ACCEPT↩︎</h1>
       </div>
-
     </div>
   </div>`;
 
   const tearContainer = document.getElementById("ticket-tear-container");
+  const declineBadge = document.getElementById("decline-badge");
+  const acceptBadge = document.getElementById("accept-badge");
 
-  tearContainer.addEventListener("mousedown", (event) => {
-    console.log(event.x);
+  let mouseClickedElement = "";
+
+  declineBadge.addEventListener("mousedown", (event) => {
+    mouseClickedElement = "decline-badge";
+  });
+
+  acceptBadge.addEventListener("mousedown", (event) => {
+    mouseClickedElement = "accept-badge";
   });
 
   tearContainer.addEventListener("mousemove", (event) => {
-    console.log(event.x);
+    const containerRect = event.target.getBoundingClientRect();
+    const relativeY = event.clientY - containerRect.top;
+    const relativeX = event.clientX - containerRect.left;
+    let degreeRotated = relativeY / 20;
+
+    if (mouseClickedElement === "decline-badge") {
+      tearContainer.style.transformOrigin = `554px 8px`;
+      tearContainer.style.transform = `rotateZ(-${degreeRotated}deg)`;
+
+      if (degreeRotated > 6) {
+        console.log("Declined!");
+        tearContainer.className = "animate-ticket-tear";
+        TICKET_STATE[allData.id] = "declined";
+      }
+    } else if (mouseClickedElement === "accept-badge") {
+      tearContainer.style.transformOrigin = `8px 8px`;
+      tearContainer.style.transform = `rotateZ(${degreeRotated}deg)`;
+
+      if (degreeRotated > 6) {
+        console.log("Accepted!");
+        tearContainer.className = "animate-ticket-tear";
+        TICKET_STATE[allData.id] = "accepted";
+        const stateEl = document.createElement("div");
+        stateEl.innerHTML = "<h1>ACCEPTED!</h1>";
+        document
+          .getElementById("ticket-details-container")
+          .appendChild(stateEl);
+      }
+    }
+  });
+
+  tearContainer.addEventListener("mouseup", (event) => {
+    mouseClickedElement = "";
+  });
+
+  tearContainer.addEventListener("animationend", () => {
+    tearContainer.remove();
+    console.log("removed!");
+    console.log(TICKET_STATE);
   });
 }
 

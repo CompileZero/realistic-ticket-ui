@@ -17,5 +17,5 @@
     "editor.lineNumbers": "off",
     "search.showLineNumbers": true,
     "liveServer.settings.port": 5501,
-    "editor.autoClosingBrackets": "never"
+    "editor.autoClosingBrackets": "languageDefined"
 }
