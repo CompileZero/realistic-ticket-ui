@@ -12,7 +12,7 @@
     opacity: 0;
   }
   100% {
-    height: 456px;
+    height: 436px;
     opacity: 100%;
   }
 }
@@ -488,5 +488,29 @@ line {
 }
 
 .animate-ticket-tear {
-  animation: drop 2s ease forwards;
+  animation: drop 1s linear;
+}
+
+#final-state {
+  padding-top: 8px;
+  border-top: 3px solid #a37d5c;
+  border-bottom: 3px solid #a37d5c;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ece2d9,
+    #ece2d9 20px,
+    #e7d8cc 20px,
+    #e7d8cc 40px
+  );
+  font-size: 64px;
+
+  text-align: center;
+  height: 120px;
+  animation: expand-basic 0.4s ease;
+  box-shadow: inset 0px 0px 10px #a37d5c;
+}
+
+#final-state h1 {
+  font-family: "Big Shoulders Inline Display", sans-serif !important;
+  user-select: none;
 }

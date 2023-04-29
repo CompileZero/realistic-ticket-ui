@@ -132,6 +132,27 @@ function renderDetails(ticket, allData) {
     extra,
     id,
   } = allData;
+
+  let badgeEl = "";
+
+  if (TICKET_STATE[id]) {
+    const stateColor = TICKET_STATE[id] === "accepted" ? "#36b27e" : "#ff8f73";
+    badgeEl = `<div id="final-state">
+    <h1 style='color: ${stateColor}'>
+    ${TICKET_STATE[id].toUpperCase()}!
+    </h1>
+    </div>`;
+  } else {
+    badgeEl = `<div id="ticket-tear-container">
+    <div id="decline-badge">
+      <h1>↪︎DECLINE</h1>
+    </div>
+    <div id="accept-badge">
+      <h1>ACCEPT↩︎</h1>
+    </div>
+  </div>`;
+  }
+
   ticket.innerHTML = `<div class="ticket-full-details">
     <div id="ticket-details-container">
       <p class="event-tag-top" style="background-color: ${bgColor};">${name}</p>
@@ -176,14 +197,7 @@ function renderDetails(ticket, allData) {
         </div>
       </div>
     </div>
-    <div id="ticket-tear-container">
-      <div id="decline-badge">
-        <h1>↪︎DECLINE</h1>
-      </div>
-      <div id="accept-badge">
-        <h1>ACCEPT↩︎</h1>
-      </div>
-    </div>
+    ${badgeEl}
   </div>`;
 
   const tearContainer = document.getElementById("ticket-tear-container");
@@ -192,55 +206,62 @@ function renderDetails(ticket, allData) {
 
   let mouseClickedElement = "";
 
-  declineBadge.addEventListener("mousedown", (event) => {
-    mouseClickedElement = "decline-badge";
-  });
+  if (tearContainer) {
+    declineBadge.addEventListener("mousedown", (event) => {
+      mouseClickedElement = "decline-badge";
+    });
 
-  acceptBadge.addEventListener("mousedown", (event) => {
-    mouseClickedElement = "accept-badge";
-  });
+    acceptBadge.addEventListener("mousedown", (event) => {
+      mouseClickedElement = "accept-badge";
+    });
 
-  tearContainer.addEventListener("mousemove", (event) => {
-    const containerRect = event.target.getBoundingClientRect();
-    const relativeY = event.clientY - containerRect.top;
-    const relativeX = event.clientX - containerRect.left;
-    let degreeRotated = relativeY / 20;
+    tearContainer.addEventListener("mousemove", (event) => {
+      const containerRect = event.target.getBoundingClientRect();
+      const relativeY = event.clientY - containerRect.top;
+      const relativeX = event.clientX - containerRect.left;
+      let degreeRotated = relativeY / 20;
 
-    if (mouseClickedElement === "decline-badge") {
-      tearContainer.style.transformOrigin = `554px 8px`;
-      tearContainer.style.transform = `rotateZ(-${degreeRotated}deg)`;
+      if (mouseClickedElement === "decline-badge") {
+        tearContainer.style.transformOrigin = `554px 8px`;
+        tearContainer.style.transform = `rotateZ(-${degreeRotated}deg)`;
 
-      if (degreeRotated > 6) {
-        console.log("Declined!");
-        tearContainer.className = "animate-ticket-tear";
-        TICKET_STATE[allData.id] = "declined";
+        if (degreeRotated > 6) {
+          tearContainer.className = "animate-ticket-tear";
+          TICKET_STATE[id] = "declined";
+        }
+      } else if (mouseClickedElement === "accept-badge") {
+        tearContainer.style.transformOrigin = `8px 8px`;
+        tearContainer.style.transform = `rotateZ(${degreeRotated}deg)`;
+
+        if (degreeRotated > 6) {
+          tearContainer.className = "animate-ticket-tear";
+          TICKET_STATE[id] = "accepted";
+        }
       }
-    } else if (mouseClickedElement === "accept-badge") {
-      tearContainer.style.transformOrigin = `8px 8px`;
-      tearContainer.style.transform = `rotateZ(${degreeRotated}deg)`;
+    });
 
-      if (degreeRotated > 6) {
-        console.log("Accepted!");
-        tearContainer.className = "animate-ticket-tear";
-        TICKET_STATE[allData.id] = "accepted";
-        const stateEl = document.createElement("div");
-        stateEl.innerHTML = "<h1>ACCEPTED!</h1>";
-        document
-          .getElementById("ticket-details-container")
-          .appendChild(stateEl);
-      }
-    }
-  });
+    tearContainer.addEventListener("mouseup", (event) => {
+      mouseClickedElement = "";
+    });
 
-  tearContainer.addEventListener("mouseup", (event) => {
-    mouseClickedElement = "";
-  });
+    tearContainer.addEventListener("animationend", () => {
+      console.log(TICKET_STATE);
+      tearContainer.remove();
 
-  tearContainer.addEventListener("animationend", () => {
-    tearContainer.remove();
-    console.log("removed!");
-    console.log(TICKET_STATE);
-  });
+      const finalStateEl = document.createElement("div");
+      finalStateEl.id = "final-state";
+      const stateColor =
+        TICKET_STATE[id] === "accepted" ? "#36b27e" : "#ff8f73";
+
+      finalStateEl.innerHTML = `<h1 style='color: ${stateColor}'>
+    ${TICKET_STATE[id].toUpperCase()}!
+    </h1>`;
+
+      document
+        .getElementById("ticket-details-container")
+        .appendChild(finalStateEl);
+    });
+  }
 }
 
 function renderBasicTicket(ticket, allData) {
